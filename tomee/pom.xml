@@ -30,9 +30,24 @@
 					</webapps>
 					
 				</configuration>
-				
+				<executions>
+			                <execution>
+			                    <phase>test</phase>
+			                    <goals>
+			                        <goal>run</goal>
+			                    </goals>
+			                </execution>
+			        </executions>
 			</plugin>
+			<plugin>
+			 <artifactId>maven-install-plugin</artifactId>
+         <version>3.0.0-M1</version>
+          <configuration>
+            <skip>true</skip>
+          </configuration>
+        </plugin>
+
 		</plugins>
-		<finalName>core-tomee-plus</finalName>
+		<finalName>tomee-stardog</finalName>
 	</build>
 </project>
