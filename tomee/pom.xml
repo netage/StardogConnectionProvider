@@ -1,0 +1,38 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>nl.netage.demo</groupId>
+  <artifactId>tomee-stardog</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>Tomee server running Stardog Sample apps</name>
+  <properties>
+		<stardog.version>7.3.0</stardog.version>
+		<tomee.version>8.0.1</tomee.version>
+		<internal.modifier>-SNAPSHOT</internal.modifier>
+	</properties>
+  <build>
+  
+		<plugins>
+			<plugin>
+				<groupId>org.apache.tomee.maven</groupId>
+				<artifactId>tomee-maven-plugin</artifactId>
+				<version>${tomee.version}</version>
+				<configuration>
+					<tomeeVersion>${tomee.version}</tomeeVersion>
+					<tomeeClassifier>webprofile</tomeeClassifier>
+					<removeTomeeWebapp>true</removeTomeeWebapp>
+					<libs>
+						<lib>nl.netage.demo:stardog-connection-provider:${stardog.version}${internal.modifier}</lib>
+						<lib>unzip:nl.netage.demo:stardog-inline:${stardog.version}${internal.modifier}:zip</lib>
+					</libs>
+					<webapps>
+						<webapp>nl.netage.demo:stardog-storetester:1.0.0${internal.modifier}?name=ROOT</webapp> -->
+					</webapps>
+					
+				</configuration>
+				
+			</plugin>
+		</plugins>
+		<finalName>core-tomee-plus</finalName>
+	</build>
+</project>
