@@ -1,11 +1,13 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>nl.netage.demo</groupId>
-  <artifactId>stardog-storetester</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
-  <packaging>war</packaging>
-  
-  <properties>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>nl.netage.demo</groupId>
+	<artifactId>stardog-storetester</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>war</packaging>
+
+	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
@@ -23,39 +25,41 @@
 		</plugins>
 		<finalName>storetest</finalName>
 	</build>
-  <repositories>
+	<repositories>
 		<repository>
 			<id>stardog-public</id>
 			<url>http://maven.stardog.com</url>
 		</repository>
 	</repositories>
-  <dependencies>
+	<dependencies>
 		<dependency>
 			<groupId>org.apache.tomee</groupId>
 			<artifactId>javaee-api</artifactId>
 			<version>8.0-1</version>
+			<!-- This is very important, this will use the libs in the tomee installation
+				it prevents class loader issues and you don't want to duplicate all the 
+				available libs in your application.
+			 -->
 			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-api</artifactId>
-			<version>2.8.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-core</artifactId>
-			<version>2.8.1</version>
 		</dependency>
 		<dependency>
 			<groupId>nl.netage.demo</groupId>
 			<artifactId>stardog-connection-provider</artifactId>
 			<version>7.3.0-SNAPSHOT</version>
+			<!-- This is very important, this will use the libs in the tomee installation
+				it prevents class loader issues and you don't want to duplicate all the 
+				available libs in your application.
+			 -->
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.complexible.stardog</groupId>
 			<artifactId>stardog-api</artifactId>
 			<version>7.3.0</version>
+			<!-- This is very important, this will use the libs in the tomee installation
+				it prevents class loader issues and you don't want to duplicate all the 
+				available libs in your application.
+			 -->
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -68,7 +72,11 @@
 					<artifactId>shiro-core</artifactId>
 				</exclusion>
 			</exclusions>
+			<!-- This is very important, this will use the libs in the tomee installation
+				it prevents class loader issues and you don't want to duplicate all the 
+				available libs in your application.
+			 -->
 			<scope>provided</scope>
 		</dependency>
-  </dependencies>
+	</dependencies>
 </project>
