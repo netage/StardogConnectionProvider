@@ -7,15 +7,10 @@ import javax.naming.NamingException;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import com.complexible.common.rdf.query.resultio.TextTableQueryResultWriter;
 import com.complexible.stardog.api.Connection;
 import com.complexible.stardog.api.SelectQuery;
 import com.stardog.stark.query.SelectQueryResult;
-import com.stardog.stark.query.io.QueryResultFormat;
 import com.stardog.stark.query.io.QueryResultFormats;
 import com.stardog.stark.query.io.QueryResultWriters;
 import com.stardog.stark.query.io.ResultWritingFailed;
@@ -25,17 +20,6 @@ import nl.netage.stardog.connectionprovider.StardogConnectionProvider;
 @Path("/")
 public class Reader {
 	
-	private final static Logger LOGGER = LogManager.getLogger(Reader.class.getName());
-	
-	
-	/**
-	 * 
-	 * @param uri
-	 * @param request
-	 * @param incident
-	 * @param subscriber
-	 * @return
-	 */
 	@GET
 	public String test()
 	{
@@ -123,6 +107,7 @@ public class Reader {
 			
 			aConn.close();
 			aConn2.close();
+			// Create a connection leak!
 			//aConn3.close();
 			
 			
@@ -130,33 +115,8 @@ public class Reader {
 		} catch (NamingException e) {
 			System.out.println("StardogStore Exception :" + e.getMessage());
 		}
-		
-		/*try {
-			AbstractJenaStore store = StoreFactory.getStoreFromJNDI();
-	        StringWriter outputWriter = new StringWriter(); 
-			
-			Model model = store.getModelfromGraph("http://example.com");
-			
-			model.write(outputWriter,"TTL");
-			return outputWriter.toString();
-		} catch (StoreException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
-		
-		
-		
-		//config
-		//System.out.println("Config:" + org.apache.logging.log4j.Logger.class.getResource("/log4j2.xml"));
-		
-		LOGGER.error("Hello World");
-		LOGGER.debug("This will be printed on debug");
-		LOGGER.log(Level.INFO,"This will be printed on info");
-		LOGGER.warn("This will be printed on warn");
-		LOGGER.error("This will be printed on error");
-		LOGGER.fatal("This will be printed on fatal");
-		return "FAIL";
-		
+	
+		return "Connection failed";
 	}
 }
 
